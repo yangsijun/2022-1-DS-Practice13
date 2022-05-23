@@ -210,8 +210,27 @@ void Sort::HeapSort() {
     cur = 0;
 
     // TODO
+    for (i = (num - 1) / 2; i >= 0; i--) {
+        adjust(i, num);
+    }
+    Print(cur++);
 }
 
 // TODO: implement an adjust()
 void Sort::adjust(int root, int n) {
+    int child, rootkey;
+    Element temp = list[root];
+    rootkey = list[root].key;
+    child = 2 * root + 1;
+    while (child <= n - 1) {
+        if ((child < n - 1) && (list[child].key < list[child + 1].key))
+            child++;
+        if (rootkey > list[child].key)
+            break;
+        else {
+            list[(child - 1) / 2] = list[child];
+            child = child * 2 + 1;
+        }
+    }
+    list[(child - 1) / 2] = temp;
 }
