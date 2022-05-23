@@ -214,6 +214,11 @@ void Sort::HeapSort() {
         adjust(i, num);
     }
     Print(cur++);
+    for (i = num - 1; i >= 0; i--) {
+        swap(&list[0], &list[i]);
+        adjust(0, i);
+        Print(cur++);
+    }
 }
 
 // TODO: implement an adjust()
