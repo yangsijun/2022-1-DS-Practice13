@@ -112,9 +112,9 @@ void Sort::InsertionSort() {
     cur = 0;
 
     // TODO
-    for (i = 0; i < num - 1; i++) {
+    for (i = 1; i < num; i++) {
         next = list[i];
-        for (j = i - 1; j >= i && next.key < list[j].key; j--)
+        for (j = i - 1; j >= 0 && next.key < list[j].key; j--)
             list[j + 1] = list[j];
         list[j + 1] = next;
         Print(cur++);
