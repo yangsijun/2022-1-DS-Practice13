@@ -164,6 +164,12 @@ void Sort::MergeSort() {
 
 // TODO: Implement a merge sort
 void Sort::MergeSort(Element sorted[], int low, int high) {
+    if (low < high) {
+        int mid = (low + high) / 2;
+        MergeSort(sorted, low, mid);
+        MergeSort(sorted, mid + 1, high);
+        merge(sorted, low, mid, high);
+    }
 }
 
 // TODO: Implement a merge sort
@@ -174,6 +180,19 @@ void Sort::merge(Element sorted[], int i, int m, int n) {
     int start = i;
 
     // TODO
+    while (i <= m && j <= n) {
+        if (list[i].key < list[j].key)
+            sorted[k++] = list[i++];
+        else
+            sorted[k++] = list[j++];
+    }
+
+    if (i > m)
+        while (j <= n)
+            sorted[k++] = list[j++];
+    else
+        while (i <= m)
+            sorted[k++] = list[i++];
 
     // Copy sorted[] to list[]
     for (i = start; i < k; i++)
