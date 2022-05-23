@@ -132,6 +132,24 @@ void Sort::QuickSort() {
 
 // TODO: Implement a quick sort
 void Sort::QuickSort(int left, int right) {
+    int pivot = list[left].key;
+    int i = left + 1;
+    int j = right;
+
+    if (left < right)
+        return;
+
+    while (left < right) {
+        while (i <= right && list[i].key < pivot)
+            i++;
+        while (j > left && list[j].key > pivot)
+            j--;
+        if (i < j)
+            swap(&list[left], &list[j]);
+    }
+    Print(cur++);
+    QuickSort(left, j - 1);
+    QuickSort(j, right);
 }
 
 // Merge Sort (completed)
